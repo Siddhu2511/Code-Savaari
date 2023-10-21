@@ -1,10 +1,11 @@
 import flet as ft
 
-def home_dashboard(pg:ft.Page):
+
+def home_dashboard(pg: ft.Page):
     pg.theme_mode = 'light'
     pg.bgcolor = ft.colors.WHITE
-    pg.window_width=380
-    pg.window_height=700
+    pg.window_width = 380
+    pg.window_height = 700
     pg.appbar = ft.AppBar(
         toolbar_height=80,
         leading=ft.Text(""),
@@ -28,22 +29,23 @@ def home_dashboard(pg:ft.Page):
         bgcolor=ft.colors.WHITE,
     )
 
-    #food listing
-
-    foodlisting = ft.Container(
-        ft.ListView(
-            ft.ListTile()
+    community = ft.Card(
+        ft.Row(
+            controls=[
+                
+            ]
         )
     )
 
-    Row = ft.Row(
+    column = ft.Column(
         controls=[
 
         ],
         scroll=ft.ScrollMode.HIDDEN
 
     )
-    pg.add(Row)
+    pg.add(column)
     pg.update()
+
 
 ft.app(target=home_dashboard)
