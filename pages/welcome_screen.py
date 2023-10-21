@@ -5,15 +5,24 @@ def welcome_screen(page:ft.Page):
     page.window_width=400
     page.window_height=600
     page.fonts={
-        "Merienda-Bold":"fonts/Merienda/Merianda-Bold.ttf"
+        "Merienda-Bold":"fonts/Merienda/Merienda-Bold.ttf"
     }
     heading = ft.Text(value="WasteZeroConnect",style=ft.TextThemeStyle.HEADLINE_MEDIUM,color=ft.colors.ORANGE,
+                      font_family="Merienda-Bold")
+    moto = ft.Text(value="Connecting Communities, Eradicating Waste: Together, We Nourish a Sustainable Future.", style=ft.TextThemeStyle.TITLE_MEDIUM, color=ft.colors.ORANGE,
                       font_family="Merienda-Bold")
 
     page.add(
         ft.Container(
-            ft.Row(
-                controls=[heading]
+            ft.Column(
+                controls=[heading,
+                          moto,
+                          ft.OutlinedButton(text="LOGIN"),
+                          ft.Text(value="Don't have an Account ?",color=ft.colors.BLACK),
+                          ft.OutlinedButton(text="SIGN UP")
+                ]
+
+
             ),
             alignment=ft.alignment.center,
             gradient=ft.LinearGradient(
