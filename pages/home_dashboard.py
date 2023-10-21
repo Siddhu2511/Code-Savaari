@@ -1,11 +1,18 @@
 import flet as ft
+import sys
+
+sys.path.append("..")
+from utils import fonts
 
 
 def home_dashboard(pg: ft.Page):
     pg.theme_mode = 'light'
     pg.bgcolor = ft.colors.WHITE
+    pg.fonts = fonts.fonts
     pg.window_width = 380
     pg.window_height = 700
+    pg.padding = 0
+
     pg.appbar = ft.AppBar(
         toolbar_height=80,
         leading=ft.Text(""),
@@ -31,15 +38,38 @@ def home_dashboard(pg: ft.Page):
 
     community = ft.Column(
         controls=[
-            ft.Text(value="See the Communities near you", size=20),
-            ft.Row(
-                controls=[
+            ft.Card(
+                ft.Container(
+                    ft.Column(
+                        controls=[ft.Text(
+                            value="See the Communities near you,",
+                            size=18,
+                            font_family="Poppins-Regular"
+                        ),
+                            ft.Row(
+                                controls=[
+                                    ft.Container(
+                                        ft.Image(src=f"images/community.png"),
+                                        height=150
+                                    ),
 
-                    ft.Container(
-                        ft.Image(src=f"images/community.png"),
-                        height=100
-                    )
-                ],
+                                    ft.Container(
+                                        ft.Text(
+                                            "See Community",
+                                            color=ft.colors.WHITE,
+                                        ),
+                                        bgcolor='#008000',
+                                        border_radius=10,
+                                        padding=ft.padding.all(10),
+                                        # margin=ft.margin.only(30, 0, 0, 60)
+                                    )
+                                ]
+                            )
+                        ],
+                    ),
+                    padding=ft.padding.all(10)
+                ),
+                margin=ft.margin.all(10)
             )
         ]
     )
