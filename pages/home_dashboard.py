@@ -29,17 +29,24 @@ def home_dashboard(pg: ft.Page):
         bgcolor=ft.colors.WHITE,
     )
 
-    community = ft.Card(
-        ft.Row(
-            controls=[
+    community = ft.Column(
+        controls=[
+            ft.Text(value="See the Communities near you", size=20),
+            ft.Row(
+                controls=[
 
-            ]
-        )
+                    ft.Container(
+                        ft.Image(src=f"images/community.png"),
+                        height=100
+                    )
+                ],
+            )
+        ]
     )
 
     column = ft.Column(
         controls=[
-
+            community
         ],
         scroll=ft.ScrollMode.HIDDEN
 
@@ -48,4 +55,4 @@ def home_dashboard(pg: ft.Page):
     pg.update()
 
 
-ft.app(target=home_dashboard)
+ft.app(target=home_dashboard, assets_dir="../assets")
