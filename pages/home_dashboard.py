@@ -32,7 +32,7 @@ def home_dashboard(pg: ft.Page):
     community = ft.Card(
         ft.Row(
             controls=[
-                
+
             ]
         )
     )
