@@ -1,6 +1,9 @@
 import flet as ft
-import math
+import sys
 
+sys.path.append("..")
+from utils import fonts
+from utils import views
 
 def welcome_screen(page: ft.Page):
     page.theme_mode = "light"
@@ -9,33 +12,38 @@ def welcome_screen(page: ft.Page):
     page.window_height = 700
     page.window_max_width = 380
     page.window_height = 700
-    page.fonts = {
-        "Merienda-Bold": "fonts/Merienda/Merienda-Bold.ttf"
-    }
+    page.fonts = fonts.fonts
     heading = ft.Text(
         value="WasteZeroConnect",
         style=ft.TextThemeStyle.HEADLINE_MEDIUM,
         color=ft.colors.WHITE,
-        font_family="Merienda-Bold"
+        font_family="Poppins-Bold"
     )
     moto = ft.Text(
         value="Connecting Communities, Eradicating Waste: Together, We Nourish a Sustainable Future.",
         style=ft.TextThemeStyle.TITLE_MEDIUM,
         color=ft.colors.WHITE70,
-        font_family="Merienda-Bold"
+        font_family="Poppins-Regular"
     )
+
+    def route_change():
+        page.views.clear()
+        page.views.append(
+            views.views_handler()['/home']
+        )
+
+    page.on_route_change = route_change
+
+    def login(e):
+        print("enthu")
+        page.go('/home')
 
     page.add(
         ft.Container(
             ft.Column(
                 controls=[heading,
                           moto,
-                          ft.OutlinedButton(text="LOGIN"),
-                          ft.Text(
-                              value="Don't have an Account ?",
-                              color=ft.colors.WHITE54
-                          ),
-                          ft.OutlinedButton(text="SIGN UP")
+                          ft.OutlinedButton(text="LOGIN",on_click=login),
                           ]
 
             ),
@@ -51,4 +59,3 @@ def welcome_screen(page: ft.Page):
     page.update()
 
 
-ft.app(target=welcome_screen, assets_dir="../assets")
